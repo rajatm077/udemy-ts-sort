@@ -1,18 +1,20 @@
-import { spawn } from "child_process";
-let elems: number[] = [5,0,4,1,2,-1];
-bubbleSort(elems);
-console.log(elems);
-
-function bubbleSort(elems: number[]): number[] {
-    for (let i = 0; i < elems.length; i++) {
-        for (let j = 1; j < elems.length - i; j++) {
-            if (elems[j-1] > elems[j]) {
-                swap(elems, j-1, j);
+class Sorter {
+    constructor(public collection: number[]) {}
+    sort(): void {
+        const { length } = this.collection;
+        for (let i = 0; i < length; i++) {
+            for (let j = 1; j < length - i; j++) {
+                if (this.collection[j-1] > this.collection[j]) {
+                    swap(this.collection, j-1, j);
+                }
             }
-        }
+        }  
     }
-    return elems;
 }
+
+const sorter = new Sorter([5,10,4,1,2,-1]);
+sorter.sort();
+console.log(sorter.collection);
 
 function swap(elems: number[], i: number, j: number): void {
     elems[i] ^= elems[j];

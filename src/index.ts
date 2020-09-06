@@ -1,23 +1,7 @@
-class Sorter {
-    constructor(public collection: number[]) {}
-    sort(): void {
-        const { length } = this.collection;
-        for (let i = 0; i < length; i++) {
-            for (let j = 1; j < length - i; j++) {
-                if (this.collection[j-1] > this.collection[j]) {
-                    swap(this.collection, j-1, j);
-                }
-            }
-        }  
-    }
-}
+import { Sorter } from "./Sorter";
+import { NumberCollection } from "./NumberCollection";
 
-const sorter = new Sorter([5,10,4,1,2,-1]);
+const nCol = new NumberCollection([-1, -4, 8, 1, 1, 3, 2, -9]);
+const sorter = new Sorter(nCol);
 sorter.sort();
-console.log(sorter.collection);
-
-function swap(elems: number[], i: number, j: number): void {
-    elems[i] ^= elems[j];
-    elems[j] ^= elems[i];
-    elems[i] ^= elems[j];
-}
+console.log(nCol.data);
